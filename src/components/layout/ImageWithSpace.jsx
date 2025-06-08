@@ -19,7 +19,7 @@ const StyledImage = styled.div`
  }
 `
 const StyledContainer = styled.div`
- backgroud-color: white;
+ backgroud-color: ${props => props.theme.white};
  padding: 30px 50px;
 
 
