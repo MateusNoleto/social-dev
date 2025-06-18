@@ -3,6 +3,8 @@ import Joi from "joi"
 
 import validadion from "../../../lib/middlewares/validadion"
 
+import createHandler from "../../../lib/middlewares/nextConnect"
+
 import { signupUser } from "../../../modules/user/user.service"
 
 const postSchema = Joi.object({
@@ -13,12 +15,16 @@ const postSchema = Joi.object({
     password: Joi.string().required().max(50).min(6),
 })
 
-const signup = connect()
- .post(validadion( {body: postSchema} ), (req, res) => {
-    function signup (){
-        signupUser(req.body)
-        res.status(200).json({ teste: "ok" })
-    }
+const signup = createHandler()
+
+ signup.post(validadion( {body: postSchema} ), async (req, res) => {
+       try{ const user = await signupUser(req.body)
+        res.status(201).json(user)
+       }catch(err){
+        console.error(err)
+        throw err
+        
+       }
  }) 
 
 
