@@ -2,7 +2,7 @@ import Joi from 'joi'
 import { withIronSessionApiRoute } from 'iron-session/next'
 
 import createHandler from '../../../lib/middlewares/nextConnect'
-import validate from "../../../lib/middlewares/validadion"
+import validate from '../../../lib/middlewares/validation'
 import { signupUser } from '../../../modules/user/user.service'
 import { signupSchema } from '../../../modules/user/user.schema'
 

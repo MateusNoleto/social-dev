@@ -1,7 +1,6 @@
-import Joi from "joi"
 import { withIronSessionApiRoute } from "iron-session/next"
 
-import validate from "../../../lib/middlewares/validadion"
+import validate from "../../../lib/middlewares/validation"
 import createHandler from "../../../lib/middlewares/nextConnect"
 import { login } from "../../../modules/user/user.service"
 
@@ -13,7 +12,7 @@ const handler = createHandler()
 
 handler.post(validate({body: loginSchema}), async(req,res) => {
     try {
-        const user =  await login(req, body)
+        const user =  await login(req.body)
         req.session.user = {
             id: user._id,
             user: user.user
