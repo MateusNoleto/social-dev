@@ -5,7 +5,7 @@ import axios from 'axios'
 import ControlledTextarea from '../inputs/ControlledTextarea'
 import { createPostSchema } from '../../../modules/post/post.schema'
 
-import Button from '../inputs/Button'
+import Button from 'components/inputs/Button'
 
 const EditPost = ({ id, text, onSave }) => {
   const { control, handleSubmit, formState: { isValid } } = useForm({
