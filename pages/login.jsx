@@ -12,8 +12,8 @@ import ImageWithSpace from "../src/components/layout/ImageWithSpace"
 import H1 from "../src/components/typography/H1"
 import H2 from "../src/components/typography/H2"
 import H4 from "../src/components/typography/H4"
-import Button from "../src/components/inputs/Button"
-import Input from "../src/components/inputs/input"
+import Button from "../inputs/Button"
+import Input from "../src/components/inputs/Input"
 
 const FormContainer = styled.div`
   margin-top: 60px;
