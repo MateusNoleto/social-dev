@@ -1,8 +1,8 @@
-import style from "styled-components"
+import styled from 'styled-components'
 
-const H3 = style.h3`
-    font-size: 26px;
-    font-weight: bold;
+const H3 = styled.h3`
+  font-weight: bold;
+  font-size: 26px;
 `
 
 export default H3

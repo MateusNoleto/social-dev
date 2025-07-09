@@ -1,48 +1,50 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
 import axios from 'axios'
 import { useSWRConfig } from 'swr'
 
 import { createPostSchema } from '../../../modules/post/post.schema'
-import H4 from "../typography/H4";
+
+import H4 from '../typography/H4'
 import ControlledTextarea from '../inputs/ControlledTextarea'
-import Button from 'components/inputs/Button'
+import Button from '../inputs/Button'
 
 const PostContainer = styled.div`
-    background-color: ${props => props.theme.white};
-    padding: 20px 40px;
+  background-color: ${props => props.theme.white};
+  padding: 20px 40px;
 
-    @media (max-width: 500px){
-        padding: 20px;
-    }
+  @media (max-width: 500px) {
+    padding: 20px;
+  }
 `
 
 const Title = styled.div`
-    font-weight: bold;
-    text-align: center;
+  font-weight: bold;
+  text-align: center;
 `
+
 const TextContainer = styled.div`
-    margin: 20px 0;
-    width: 100%;
+  margin: 20px 0;
+  width: 100%;
 `
 
 const BottomContainer = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 
-    @media (max-width: 500px) {
-        flex-direction: column-reverse;
-    }
+  @media (max-width: 500px) {
+    flex-direction: column-reverse;
+  }
 `
 
 const BottomText = styled.p`
-    flex: 1;
+  flex: 1;
 `
 
 function CreatePost ({ username }) {
-    const { mutate } = useSWRConfig()
+  const { mutate } = useSWRConfig()
   const { control, handleSubmit, formState: { isValid }, reset } = useForm({
     resolver: joiResolver(createPostSchema),
     mode: 'all'
@@ -56,10 +58,10 @@ function CreatePost ({ username }) {
     }
   }
 
-    return(
-        <PostContainer>
-           <H4><Title>No que você está pensando, @{username}?</Title></H4>
-           <form onSubmit={handleSubmit(onSubmit)}>
+  return (
+    <PostContainer>
+      <H4><Title>No que você está pensando, @{username}?</Title></H4>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <TextContainer>
           <ControlledTextarea 
             placeholder="Digite sua mensagem" 
@@ -74,8 +76,8 @@ function CreatePost ({ username }) {
           <Button disabled={!isValid}>Postar mensagem</Button>
         </BottomContainer>
       </form>
-        </PostContainer>
-    )
+    </PostContainer>
+  )
 }
 
 export default CreatePost

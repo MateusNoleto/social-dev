@@ -39,30 +39,18 @@ const errorMessage = {
 }
 
 const Input = ({ label, name, control, defaultValue = '', ...props }) => {
-  if (!control) {
-    console.error(`control está ausente no Input "${name}"`);
-    return null; // ou algum fallback visual
-  }
-
   const {
     field: { value, onChange },
     fieldState: { error }
-  } = useController({ name, control, defaultValue });
+  } = useController({ name, control, defaultValue })
 
   return (
     <InputContainer>
       <StyledLabel>{label}</StyledLabel>
-      <StyledInput
-        placeholder={label}
-        error={!!error}
-        {...props}
-        value={value}
-        onChange={onChange}
-      />
+      <StyledInput placeholder={label} error={error} {...props} value={value} onChange={onChange} />
       {error && <ErrorLabel>{errorMessage[error.type] || error.message}</ErrorLabel>}
     </InputContainer>
-  );
-};
-
+  )
+}
 
 export default Input
